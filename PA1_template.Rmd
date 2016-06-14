@@ -2,21 +2,11 @@
 title: "Reproducible Research - Project 1"
 author: "Dan Schreck"
 date: "June 13, 2016"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
-<style type="text/css">
-
-body, td {
-   font-size: 12px;
-}
-code.r{
-  font-size: 10px;
-}
-pre {
-  font-size: 10px
-}
-</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -91,7 +81,8 @@ total.steps <- aggregate(steps ~ date, data=activity, na.rm=TRUE, sum)
 Then we will make histogram of the total number of steps taken each day:
 ```{r}
 #Total steps per day:
-plot(as.Date(total.steps$date), total.steps$steps, type="h", main="Steps per Day", xlab="", ylab="# Steps per Day", col="#0033FF", lwd=5)
+plot(as.Date(total.steps$date), total.steps$steps, type="h", main="Steps per Day",
+     xlab="", ylab="# Steps per Day", col="#0033FF", lwd=5)
 abline(h=mean(total.steps$steps, na.rm=TRUE), col="#FF3333", lwd=3)
 text(as.Date("2012-11-29"),mean(total.steps$steps)+700," Mean", col="#FF3333")
 ```      
@@ -117,7 +108,9 @@ plot the first record is 0, which represents midnight and the last recording is 
 which is 11:55pm.
 ```{r}
 avgStepsDay <- tapply(activity$steps, activity$interval, mean, na.rm=T, simplify=T)
-plot(as.integer(names(avgStepsDay)), avgStepsDay, type="l", main="Daily Activity Pattern\nAvg Steps per 5 mins", xlab="Time of Day\n 0=midnight to 2355 (11:55pm)", ylab="# Steps", col="#0033FF", lwd=2)
+plot(as.integer(names(avgStepsDay)), avgStepsDay, type="l", main="Daily Activity Pattern\n
+     Avg Steps per 5 mins", xlab="Time of Day\n 0=midnight to 2355 (11:55pm)", 
+     ylab="# Steps", col="#0033FF", lwd=2)
 ```     
       
 From here we can calculate the 5-minute interval, on average across all the days in 
