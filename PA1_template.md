@@ -2,18 +2,6 @@
 Dan Schreck  
 June 13, 2016  
 
-<style type="text/css">
-
-body, td {
-   font-size: 12px;
-}
-code.r{
-  font-size: 10px;
-}
-pre {
-  font-size: 10px
-}
-</style>
 
 
 
@@ -89,12 +77,13 @@ Then we will make histogram of the total number of steps taken each day:
 
 ```r
 #Total steps per day:
-plot(as.Date(total.steps$date), total.steps$steps, type="h", main="Steps per Day", xlab="", ylab="# Steps per Day", col="#0033FF", lwd=5)
+plot(as.Date(total.steps$date), total.steps$steps, type="h", main="Steps per Day",
+     xlab="", ylab="# Steps per Day", col="#0033FF", lwd=5)
 abline(h=mean(total.steps$steps, na.rm=TRUE), col="#FF3333", lwd=3)
 text(as.Date("2012-11-29"),mean(total.steps$steps)+700," Mean", col="#FF3333")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](figureunnamed-chunk-3-1.png)<!-- -->
 
 
 The average steps taken per day works out to be: 
@@ -128,10 +117,12 @@ which is 11:55pm.
 
 ```r
 avgStepsDay <- tapply(activity$steps, activity$interval, mean, na.rm=T, simplify=T)
-plot(as.integer(names(avgStepsDay)), avgStepsDay, type="l", main="Daily Activity Pattern\nAvg Steps per 5 mins", xlab="Time of Day\n 0=midnight to 2355 (11:55pm)", ylab="# Steps", col="#0033FF", lwd=2)
+plot(as.integer(names(avgStepsDay)), avgStepsDay, type="l", main="Daily Activity Pattern\n
+     Avg Steps per 5 mins", xlab="Time of Day\n 0=midnight to 2355 (11:55pm)", 
+     ylab="# Steps", col="#0033FF", lwd=2)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](figureunnamed-chunk-6-1.png)<!-- -->
       
 From here we can calculate the 5-minute interval, on average across all the days in 
 the dataset that has the highest average number of steps:
@@ -187,7 +178,7 @@ abline(h=mean(total.steps.na.agg$steps, na.rm=TRUE), col="#FF3333", lwd=3)
 text(as.Date("2012-11-29"),mean(total.steps.na.agg$steps)+700,"  Mean", col="#FF3333")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](figureunnamed-chunk-10-1.png)<!-- -->
 
 
 We see only slight changes in the histogram and no change to the mean:
@@ -244,7 +235,7 @@ xyplot(steps ~ interval | factor(day),
        data=avg.step.day)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+![](figureunnamed-chunk-14-1.png)<!-- -->
 
 Based on this analysis we can see that weekday activity starts around 5am and peaks 
 around 8-9am, compared to a slower ramp in activity on the weekend, peaking closer
